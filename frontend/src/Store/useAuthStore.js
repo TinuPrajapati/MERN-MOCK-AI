@@ -17,7 +17,7 @@ const useAuthStore = create((set, get) => ({
             navigate("/")
             toast.success(res.data.message)
         } catch (error) {
-            console.log(error)
+            toast.error(error.response.data.message)
         } finally {
             set({ isLoading: false });
         }
@@ -32,9 +32,8 @@ const useAuthStore = create((set, get) => ({
             set({ authUser: res.data.user });
             toast.success(res.data.message)
             navigate("/dashboard")
-            // localStorage.setItem("authUser", JSON.stringify(res.data.user));
         } catch (error) {
-            console.log(error)
+            toast.error(error.response.data.message)
         } finally {
             set({ isLoading: false });
         }
@@ -51,7 +50,7 @@ const useAuthStore = create((set, get) => ({
             toast.success(res.data.message)
             navigate("/login")
         } catch (error) {
-            console.log(error)
+            toast.error(error.response.data.message)
         } finally {
             set({ isLoading: false });
         }
@@ -66,7 +65,7 @@ const useAuthStore = create((set, get) => ({
             set({ authUser: res.data.user });
         } catch (error) {
             set({ authUser: null });
-            console.log(error)
+            console.log(error.response.data.message);
         } finally {
             set({ isLoading: false });
         }

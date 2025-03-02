@@ -4,8 +4,11 @@ const TestSchema = new mongoose.Schema({
     questions: [{ 
         question: String, 
         options: [String], 
-        answer: String 
+        answer: String ,
+        level: String,
+        description: String
     }],
+    level: String,
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     timeLimit: {
         type:Number,

@@ -18,9 +18,9 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="min-h-[100vh] bg-gray-50 flex flex-col">
         <Navbar />
-        <main className="flex-grow">
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={authUser == null ? <Login /> : <Navigate to="/dashboard" />} />
@@ -43,10 +43,8 @@ function App() {
             />
           </Routes>
         </main>
-        <footer className="bg-gray-800 text-white py-6">
-          <div className="container mx-auto px-4 text-center">
-            <p>&copy; {new Date().getFullYear()} AI Test Platform. All rights reserved.</p>
-          </div>
+        <footer className="bg-sky-400 text-white h-[10vh] flex items-center justify-center">
+          <p>&copy; {new Date().getFullYear()} AI Test Platform. All rights reserved.</p>
         </footer>
         <Toaster />
       </div>

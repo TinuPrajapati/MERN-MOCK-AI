@@ -161,6 +161,50 @@ const TestPage = () => {
                 ></div>
               </div>
             </div>
+            <div className="mb-8">
+              <h2 className="text-xl font-semibold mb-4">Detailed Answers</h2>
+              {test.questions.map((question, index) => {
+                const userAnswer =
+                  selectedAnswers[index] !== -1
+                    ? question.options[selectedAnswers[index]]
+                    : null;
+                const isCorrect = userAnswer === question.answer;
+                return (
+                  <div key={index} className="mb-6 border p-4 rounded-md">
+                    <h3 className="text-lg font-bold">
+                      {`Q${index + 1}: ${question.question}`}
+                    </h3>
+                    {question.description && (
+                      <p className="text-sm text-gray-600 mb-2">
+                        Description: {question.description}
+                      </p>
+                    )}
+                    <p className="text-sm">
+                      Your Answer:{' '}
+                      {userAnswer ? (
+                        <span
+                          className={`font-bold ${
+                            isCorrect ? 'text-green-500' : 'text-red-500'
+                          }`}
+                        >
+                          {userAnswer}
+                        </span>
+                      ) : (
+                        <span className="font-bold text-gray-500">
+                          Not Answered
+                        </span>
+                      )}
+                    </p>
+                    <p className="text-sm">
+                      Correct Answer:{' '}
+                      <span className="font-bold text-green-600">
+                        {question.answer}
+                      </span>
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
             <div className="flex justify-center">
               <button
                 onClick={() => navigate('/dashboard')}
@@ -203,8 +247,8 @@ const TestPage = () => {
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6 mb-4">
-          <h2 className="text-lg font-semibold mb-4">
-            {currentQuestion.question}
+          <h2 className="text-lg font-semibold mb-2">
+            Q- {currentQuestion.question}
           </h2>
           <div className="space-y-3">
             {currentQuestion.options.map((option, index) => (

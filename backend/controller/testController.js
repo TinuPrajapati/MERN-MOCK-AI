@@ -3,12 +3,13 @@ import { generateQuestions } from "../utils/generateQuestions.js";
 
 export const createTest = async (req, res) => {
   const { userId } = req.user;
-  const { topic, number } = req.body;
+  const { topic, number,level } = req.body;
 
   try {
-    const questions = await generateQuestions(topic, number);
-    const test = new Test({ title: topic, questions, createdBy: userId });
+    const questions = await generateQuestions(topic, number,level);
+    const test = new Test({ title: topic, questions, createdBy: userId,level });
     await test.save();
+    console.log(test);
     res.status(201).json({ message: "Test Create Successfully" });
   } catch (error) {
     console.log("Error come in createTest route:",error);

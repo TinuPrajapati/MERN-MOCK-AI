@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+*{
+    font-family: "Nunito", sans-serif;
+}
+
+#roboto{
+    font-family: "Roboto", sans-serif;
+}
+
+#shafarik{
+    font-family: "Shafarik", sans-serif;
+}
