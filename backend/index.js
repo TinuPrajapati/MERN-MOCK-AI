@@ -26,6 +26,10 @@ const main = async () => {
 };
 main();
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+})
+
 app.use("/api/auth", authRoutes);
 app.use("/api/test",testRouter);
 app.use("/api/record",recordRouter);
